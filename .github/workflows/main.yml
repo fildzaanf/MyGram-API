@@ -37,10 +37,10 @@ jobs:
           key: ${{ secrets.KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            sudo docker stop ${{ secrets.CNAME }} || true
-            sudo docker rm ${{ secrets.CNAME }} || true
+            sudo docker stop ${{ secrets.DOCKERHUB_CNAME }} || true
+            sudo docker rm ${{ secrets.DOCKERHUB_CNAME }} || true
             sudo docker rmi ${{ secrets.DOCKERHUB_USERNAME }}/fildzaanf || true
-            sudo docker run --name ${{ secrets.CNAME }} -p 8000:8000 -d \
+            sudo docker run --name ${{ secrets.DOCKERHUB_CNAME }} -p 8000:8000 -d \
               -e POSTGRESQL_HOST=${{ secrets.POSTGRESQL_HOST }} \
               -e POSTGRESQL_PORT=${{ secrets.POSTGRESQL_PORT }} \
               -e POSTGRESQL_USER=${{ secrets.POSTGRESQL_USER }} \
